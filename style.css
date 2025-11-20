@@ -1,0 +1,219 @@
+/* =========================================
+   Variables de Diseño (Paleta de Color ONU/San José)
+   ========================================= */
+:root {
+    /* Colores Principales */
+    --blue-un-dark: #003366; /* Azul oscuro de la imagen */
+    --blue-un-light: #4b92db; /* Azul claro de la imagen */
+    --blue-primary: #0055AA; /* Un azul institucional fuerte para títulos */
+    --blue-accent: #007bff; /* Azul brillante para botones */
+    
+    /* Colores de Texto */
+    --text-dark: #0A1E3C; /* Casi negro, pero con tinte azul para que combine */
+    --text-muted: #3A4E6C;
+    --text-white: #ffffff;
+
+    /* Efecto Cristal (Glassmorphism) */
+    --glass-bg: rgba(255, 255, 255, 0.85); /* Blanco al 85% de opacidad */
+    --glass-border: 1px solid rgba(255, 255, 255, 0.3);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+}
+
+/* =========================================
+   Reset y Estilos Base
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif; /* Usa la fuente de Google si se cargó, si no una estándar */
+    line-height: 1.6;
+    color: var(--text-dark);
+    /* AQUI VA TU IMAGEN DE FONDO */
+    background-image: url('fondo-onu.jpg'); /* ASEGÚRATE QUE EL NOMBRE SEA CORRECTO */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* El fondo se queda fijo al hacer scroll */
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+/* =========================================
+   CLASE MAESTRA: El Contenedor de Cristal
+   Esto es lo que hace que el texto se lea sobre el fondo
+   ========================================= */
+.glass-container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px); /* Difumina el fondo detrás del contenedor (Efecto premium) */
+    -webkit-backdrop-filter: blur(10px); /* Para soporte en Safari */
+    border-radius: 16px;
+    border: var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    padding: 2rem;
+}
+
+/* Wrappers para centrar el contenido en la página */
+.container-wrapper {
+    max-width: 1100px;
+    margin: 4rem auto; /* Espacio arriba y abajo, centrado horizontalmente */
+    padding: 0 20px;
+}
+
+/* Estilos generales de tipografía dentro de los contenedores */
+h1, h2, h3 {
+    color: var(--blue-primary);
+    margin-bottom: 1rem;
+}
+
+h1 { font-size: 2.5rem; font-weight: 700; }
+h2 { font-size: 2rem; }
+p { margin-bottom: 1rem; color: var(--text-muted); }
+
+/* =========================================
+   Componentes Específicos
+   ========================================= */
+
+/* --- Barra de Navegación --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    position: sticky; /* Se queda pegada arriba */
+    top: 20px;
+    z-index: 100;
+    margin: 0 20px; /* Un pequeño margen a los lados */
+    border-radius: 50px; /* Bordes más redondeados para la nav */
+.nav-links a.active-link {
+    color: var(--blue-accent); /* El mismo azul brillante de los botones */
+    font-weight: 700; /* Lo hacemos más gordito */
+    border-bottom: 2px solid var(--blue-accent); /* Una línea sutil debajo */
+}
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--blue-un-dark);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--blue-primary);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--blue-accent);
+}
+
+/* --- Sección Héroe --- */
+.hero-section {
+    height: 80vh; /* Ocupa el 80% de la altura de la pantalla */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 3rem;
+}
+
+/* --- Botones --- */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--blue-accent);
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+
+.btn-primary:hover {
+    background-color: var(--blue-primary);
+    transform: translateY(-2px); /* Pequeño efecto de elevación */
+}
+
+/* --- Grids para Características y Cronograma --- */
+.features-grid, .timeline-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Columnas automáticas responsivas */
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Estilos para las tarjetas dentro del grid */
+.feature-item, .timeline-card {
+    background: rgba(255, 255, 255, 0.6); /* Un poco más transparente que el contenedor principal */
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 85, 170, 0.1); /* Borde azul muy sutil */
+}
+
+.timeline-card {
+    position: relative; /* Para posicionar la "badge" */
+}
+
+/* --- Badges del Cronograma --- */
+.phase-badge {
+    display: inline-block;
+    background-color: var(--text-muted);
+    color: white;
+    padding: 0.2rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.badge-active {
+    background-color: var(--blue-accent); /* Destacar la fase 2 como ejemplo */
+}
+
+.date {
+    display: block;
+    font-weight: bold;
+    color: var(--blue-un-dark);
+    margin-bottom: 0.5rem;
+}
+
+/* --- Utilidades y Footer --- */
+.text-center { text-align: center; }
+.margin-bottom-large { margin-bottom: 6rem; }
+
+.highlight-text {
+    font-size: 1.1rem;
+    color: var(--blue-un-dark);
+    font-weight: 500;
+    border-left: 4px solid var(--blue-accent);
+    padding-left: 1rem;
+    display: inline-block;
+    margin-top: 1rem;
+}
+
+.footer {
+    text-align: center;
+    margin: 20px;
+    font-size: 0.9rem;
+    border-radius: 20px;
+}
